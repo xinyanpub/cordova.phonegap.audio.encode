@@ -55,22 +55,24 @@
     NSLog(@"doing success callback");
 
     CDVPluginResult* pluginResult = nil;
-    NSString* javaScript = nil;
+  //  NSString* javaScript = nil;
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:path];
-    javaScript = [pluginResult toSuccessCallbackString:self.callbackId];
-    [self writeJavascript:javaScript];
+   // javaScript = [pluginResult toSuccessCallbackString:self.callbackId];
+   // [self writeJavascript:javaScript];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
 }
 
 -(void) doFailCallback:(NSString*)status {
     NSLog(@"doing fail callback");
 
     CDVPluginResult* pluginResult = nil;
-    NSString* javaScript = nil;
+   // NSString* javaScript = nil;
 
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:status];
-    javaScript = [pluginResult toErrorCallbackString:self.callbackId];
+   // javaScript = [pluginResult toErrorCallbackString:self.callbackId];
 
-    [self writeJavascript:javaScript];
+   // [self writeJavascript:javaScript];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
 }
 
 @end
